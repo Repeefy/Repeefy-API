@@ -6,7 +6,7 @@ module.exports = {
     cryptoKey: process.env.CRYPTO_KEY || "secretKeyRef",
     mysql: {
         connection: {
-            host: process.env.DATABASE_HOST || "bs_db",
+            host: process.env.DATABASE_HOST || "beneficiaryserviceapp_db",
             port: process.env.DATABASE_PORT || 3306,
             database: process.env.DATABASE_NAME ||  "BSDBS",
             user: process.env.DATABASE_USERNAME || "bsuser",
