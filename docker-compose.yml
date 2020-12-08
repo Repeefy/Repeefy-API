@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+  beneficiary:    
+    container_name: beneficiaryserviceapp
+    image: beneficiaryserviceapp
+    build: .
+    volumes:
+      - .:/src
+    networks:
+      - main_network
+
+  database:
+    container_name: beneficiaryserviceapp_db
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
+    ports:
+        - "3306"
+    environment:
+        MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+        MYSQL_USER: "bsuser"
+        MYSQL_PASSWORD: "bs_pass"
+        MYSQL_DATABASE: "BSDBS"
+    networks:
+        - main_network
+
+networks:
+  main_network:
+    driver: bridge
