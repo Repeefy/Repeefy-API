@@ -1,7 +1,7 @@
 "use strict";
 
 const jwt = require("jsonwebtoken");
-const config = require("../../config/config.js");
+const config = require("./config");
 const authKey = config.auth_key;
 const BCRYPT_SALT_ROUNDS = 12;
 const bcrypt = require("bcrypt");
