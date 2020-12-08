@@ -14,7 +14,7 @@ RUN npm install nodemon knex bookshelf -g
 COPY . /src
 
 # Expose web service
-EXPOSE 8082
+EXPOSE 8020
 
 CMD [ "node", "server.js" ]
  
