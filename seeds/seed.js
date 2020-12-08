@@ -1,14 +1,10 @@
 exports.seed = function(knex, Promise) {
-    function deleteTables() {
-        return knex("user_type").del();
-    }
-
     return deleteTables()
       .then(function() {
         return knex("user_type").insert([
             {
                 id: 1,
-                name: "registered_user"
+                name: "personal"
             },
             {
                 id: 2,
@@ -28,5 +24,11 @@ exports.seed = function(knex, Promise) {
           },
       ]);
     });
+
+    function deleteTables() {
+      return knex('user_type').del()
+      .then(() => knex('status').del())
+    }
+
   };
   
