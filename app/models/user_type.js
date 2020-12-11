@@ -2,6 +2,7 @@
 
 const bookshelf = require("../bookshelf");
 const utils = require('../../config/utils');
+require('./user');
 
 let UserType = bookshelf.Model.extend({
     tableName: "user_type",

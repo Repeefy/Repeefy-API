@@ -3,13 +3,12 @@
 const utils = require('../../config/utils');
 const bookshelf = require("../bookshelf");
 
+require('./wallet');
+require('./user_type');
+
 let User = bookshelf.Model.extend({
     tableName: "users",
     hasTimestamps: true,
-
-    WalletAccount() {
-        return this.hasOne("WalletAccount");
-    },
 
     Wallet() {
         return this.hasOne("Wallet");
@@ -36,7 +35,22 @@ let User = bookshelf.Model.extend({
                     return reject(err);
                 });
         });
-    }
+    },
+    fetchUserByEmail: async function(email) {
+        return new Promise((resolve, reject) => {
+            return new User()
+                .query((qb) => {
+                    qb.where("email", "=", email);
+                })
+                .fetchAll({withRelated: ["Wallet"]})
+                .then(async (res) => {
+                    return resolve(await utils.toJSON(res));
+                })
+                .catch((err) => {
+                    return reject(err);
+                });
+        });
+    },
 });
 
 
