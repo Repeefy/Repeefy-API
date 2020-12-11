@@ -33,6 +33,32 @@ class Wallet {
             );            
         });
     }
+
+    async get(req, res) {
+        return await new WalletService().get()
+        .then((resData) => {
+            return res.send(
+                httpStatus.CREATED, 
+                {
+                    message: "beneficiary fetched successfully",
+                    data: resData
+                },
+            );
+        })
+        .catch((error) => {
+            logger.log(error);
+            if(error.message == constants.auth_error_message){
+                return res.send(
+                    httpStatus.UNAUTHORIZED,
+                    new errors.UnauthorizedError(error.message.toString())
+                ); 
+            }
+            res.send(
+                httpStatus.INTERNAL_SERVER_ERROR,
+                new errors.InternalServerError(error.message.toString())
+            );            
+        });
+    }
 }
 
 module.exports = Wallet;

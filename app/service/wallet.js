@@ -89,6 +89,12 @@ class WalletService extends Auth {
             && (each.title == newData.title));
     }
 
+
+    async get() {
+        return new Promise(async(resolve, reject) => {
+            return resolve(new BeneficiaryModel().fetchAll());   
+        })
+    }
 }
 
 module.exports = WalletService;
