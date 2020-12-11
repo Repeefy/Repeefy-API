@@ -3,6 +3,7 @@
 const transactionCategory = ["credit", "debit", "wallet_credit"];
 const notFoundError = "not found";
 const duration = ["one_month", "six_months", "one_year", "recurring"];
+const status_ = ["active", "inactive", "calcelled"];
 const auth_error_message = "Authentication Error";
 const status = {
     ENABLED: 1,
@@ -20,6 +21,7 @@ const paystackBadRequestMessage = "Request failed with status code 400";
 const noWalletForBeneficiaryError = "User does not have a wallet yet. Ask them to update account details and try again";
 
 module.exports = {
+    status_,
     transactionCategory,
     paymentApproved,
     notFoundError,
